@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="label_text">#4A4A4A</color>
+    <color name="label_alway_selected">#999999</color>
+    <color name="label_bg">#E6E6E6</color>
+</resources>
