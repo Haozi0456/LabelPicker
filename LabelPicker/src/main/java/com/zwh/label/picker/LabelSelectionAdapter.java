@@ -41,7 +41,7 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public LabelTitleViewHolder selectedTitleViewHolder;
     private OnItemDragListener onChannelDragListener;
     private OnEditFinishListener onEditFinishListener;
-    private boolean isEditing;
+    private boolean isEditing = false;
 
     public LabelSelectionAdapter(List<LabelSelectionItem> data) {
         if (data == null) {
@@ -51,14 +51,14 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+    public void setInitMode(boolean flag){
+        this.isEditing =  flag;
+    }
+
     public void setEditMode(){
         if (isEditing) {
             changeEditState(false);
-//            selectedTitleViewHolder.tvTitle.setText("已选标签");
-//            selectedTitleViewHolder.tvAction.setText("编辑");
         } else {
-//            selectedTitleViewHolder.tvTitle.setText("已选标签");
-//            selectedTitleViewHolder.tvAction.setText("完成");
             changeEditState(true);
         }
     }
@@ -493,6 +493,10 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return true;
         }
         return false;
+    }
+
+    public void finishedEdit(){
+        finishEdit();
     }
 
     public void setNewData(List<LabelSelectionItem> mData) {

@@ -35,6 +35,8 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
     private ItemTouchHelper mHelper;
     private OnEditFinishListener mOnEditFinishListener;
 
+    private boolean initMode = false;
+
     public static LabelSelectionFragment newInstance(ArrayList<Label> selectedLabels, ArrayList<Label> unselectedLabels) {
 
         Bundle args = new Bundle();
@@ -111,6 +113,7 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
                 }
             }
             mLabelSelectionAdapter = new LabelSelectionAdapter(labelSelectionItems);
+            mLabelSelectionAdapter.setInitMode(initMode);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
             gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
@@ -130,8 +133,19 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
         }
     }
 
-    public void setEdieMode(){
-        if(mLabelSelectionAdapter != null){
+    /**
+     * 设置初始编辑模式
+     * @param isEditMode 是否为编辑模式 默认false
+     */
+    public void setInitMode(boolean isEditMode){
+        this.initMode = isEditMode;
+    }
+
+    /**
+     * 改变编辑模式
+     */
+    public void changeEditMode(){
+        if(mLabelSelectionAdapter!=null){
             mLabelSelectionAdapter.setEditMode();
         }
     }
@@ -155,6 +169,7 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
     public boolean cancelEdit() {
         return mLabelSelectionAdapter.cancelEdit();
     }
+
 
 
 }

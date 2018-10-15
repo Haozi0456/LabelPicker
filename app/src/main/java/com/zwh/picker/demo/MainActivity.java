@@ -63,19 +63,20 @@ public class MainActivity extends AppCompatActivity implements OnEditFinishListe
                 .beginTransaction()
                 .replace(R.id.content_view, labelSelectionFragment)
                 .commit();
-        handler = new Handler(){
-
-            @Override
-            public void handleMessage(Message msg) {
-                switch (msg.what) {
-                    case 0:
-                        labelSelectionFragment.setEdieMode();
-                        break;
-                }
-            }
-        };
-
-        handler.sendEmptyMessageDelayed(0,3000);
+        labelSelectionFragment.setInitMode(false);
+//        handler = new Handler(){
+//
+//            @Override
+//            public void handleMessage(Message msg) {
+//                switch (msg.what) {
+//                    case 0:
+//                        labelSelectionFragment.setEdieMode();
+//                        break;
+//                }
+//            }
+//        };
+//
+////        handler.sendEmptyMessageDelayed(0,3000);
     }
 
 
