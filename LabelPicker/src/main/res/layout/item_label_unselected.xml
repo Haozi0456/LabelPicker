@@ -8,21 +8,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="2dp"
+        android:padding="5dp"
         >
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="35dp"
             android:background="@drawable/bg_label_normal"
             android:elevation="@dimen/elevation_label"
             android:gravity="center"
             android:text="精华"
             android:textColor="@color/label_text"
             android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:elevation="@dimen/elevation_label"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="end"
+            android:visibility="visible"
+            android:src="@drawable/tag_add"/>
     </FrameLayout>
 
 </FrameLayout>

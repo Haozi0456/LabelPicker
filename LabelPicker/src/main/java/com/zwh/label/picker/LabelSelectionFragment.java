@@ -12,8 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * author : zchu
@@ -57,16 +60,18 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRecyclerView = new RecyclerView(inflater.getContext());
-        mRecyclerView.setPadding(
-                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()),
-                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()),
-                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()),
-                0
-        );
+        View view = inflater.inflate(R.layout.label_picker_fragment,container,false);
+//        mRecyclerView = new RecyclerView(inflater.getContext());
+//        mRecyclerView.setPadding(
+//                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics()),
+//                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()),
+//                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics()),
+//                0
+//        );
+        mRecyclerView = view.findViewById(R.id.labelRecyclerView);
         mRecyclerView.setClipToPadding(false);
         mRecyclerView.setClipChildren(false);
-        return mRecyclerView;
+        return view;
     }
 
     @Override
@@ -84,7 +89,7 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
         Bundle arguments = getArguments();
         if (arguments != null) {
             final ArrayList<LabelSelectionItem> labelSelectionItems = new ArrayList<>();
-            labelSelectionItems.add(new LabelSelectionItem(LabelSelectionItem.TYPE_LABEL_SELECTED_TITLE, "切换栏目"));
+            labelSelectionItems.add(new LabelSelectionItem(LabelSelectionItem.TYPE_LABEL_SELECTED_TITLE, "已选标签"));
             ArrayList<Label> alwaySelectedLabels = arguments.getParcelableArrayList(BUNDLE_ALWAY_SELECTED_LABELS);
             if (alwaySelectedLabels != null && alwaySelectedLabels.size() > 0) {
                 for (Label alwaySelectedLabel : alwaySelectedLabels) {
@@ -97,7 +102,7 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
                     labelSelectionItems.add(new LabelSelectionItem(LabelSelectionItem.TYPE_LABEL_SELECTED, selectedLabel));
                 }
             }
-            labelSelectionItems.add(new LabelSelectionItem(LabelSelectionItem.TYPE_LABEL_UNSELECTED_TITLE, "点击添加更多标签"));
+            labelSelectionItems.add(new LabelSelectionItem(LabelSelectionItem.TYPE_LABEL_UNSELECTED_TITLE, "未选标签"));
             ArrayList<Label> unselectedLabels = arguments.getParcelableArrayList(BUNDLE_UNSELECTED_LABELS);
             if (unselectedLabels != null && unselectedLabels.size() > 0) {
 
@@ -122,10 +127,13 @@ public class LabelSelectionFragment extends Fragment implements OnItemDragListen
             mLabelSelectionAdapter.setOnEditFinishListener(mOnEditFinishListener);
             mHelper = new ItemTouchHelper(callBack);
             mHelper.attachToRecyclerView(mRecyclerView);
-
         }
+    }
 
-
+    public void setEdieMode(){
+        if(mLabelSelectionAdapter != null){
+            mLabelSelectionAdapter.setEditMode();
+        }
     }
 
     @Override

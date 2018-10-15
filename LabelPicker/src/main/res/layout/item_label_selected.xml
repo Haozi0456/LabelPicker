@@ -7,16 +7,14 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:padding="5dp"
         android:layout_gravity="center">
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
             android:elevation="@dimen/elevation_label"
             android:background="@drawable/bg_label_normal"
             android:gravity="center"
@@ -29,10 +27,11 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:elevation="@dimen/elevation_label"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
             android:layout_gravity="end"
             android:visibility="visible"
-            app:srcCompat="@drawable/ic_label_remove" />
+            android:src="@drawable/tag_minus" />
 
     </FrameLayout>
 </FrameLayout>

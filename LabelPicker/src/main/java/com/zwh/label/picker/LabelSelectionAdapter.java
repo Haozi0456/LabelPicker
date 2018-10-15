@@ -38,7 +38,7 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private List<LabelSelectionItem> mData;
     private LayoutInflater mLayoutInflater;
     private RecyclerView mRecyclerView;
-    private LabelTitleViewHolder selectedTitleViewHolder;
+    public LabelTitleViewHolder selectedTitleViewHolder;
     private OnItemDragListener onChannelDragListener;
     private OnEditFinishListener onEditFinishListener;
     private boolean isEditing;
@@ -49,8 +49,18 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else {
             this.mData = data;
         }
+    }
 
-
+    public void setEditMode(){
+        if (isEditing) {
+            changeEditState(false);
+//            selectedTitleViewHolder.tvTitle.setText("已选标签");
+//            selectedTitleViewHolder.tvAction.setText("编辑");
+        } else {
+//            selectedTitleViewHolder.tvTitle.setText("已选标签");
+//            selectedTitleViewHolder.tvAction.setText("完成");
+            changeEditState(true);
+        }
     }
 
     public void setOnChannelDragListener(OnItemDragListener onChannelDragListener) {
@@ -95,10 +105,10 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     public void onClick(View v) {
                         if (isEditing) {
                             changeEditState(false);
-                            selectedTitleViewHolder.tvTitle.setText("切换栏目");
+                            selectedTitleViewHolder.tvTitle.setText("已选标签");
                             selectedTitleViewHolder.tvAction.setText("编辑");
                         } else {
-                            selectedTitleViewHolder.tvTitle.setText("拖动排序");
+                            selectedTitleViewHolder.tvTitle.setText("已选标签");
                             selectedTitleViewHolder.tvAction.setText("完成");
                             changeEditState(true);
                         }
@@ -109,6 +119,8 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             case LabelSelectionItem.TYPE_LABEL_UNSELECTED_TITLE:
                 LabelTitleViewHolder unselectedTitleViewHolder = new LabelTitleViewHolder(mLayoutInflater.inflate(R.layout.item_label_title, parent, false));
                 unselectedTitleViewHolder.tvAction.setVisibility(View.GONE);
+                unselectedTitleViewHolder.tvTip.setVisibility(View.GONE);
+                unselectedTitleViewHolder.devideLineView.setVisibility(View.VISIBLE);
                 viewHolder = unselectedTitleViewHolder;
                 break;
         }
@@ -147,7 +159,7 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     //开启编辑模式
                     changeEditState(true);
                     //  mEditViewHolder.setText(R.id.tvEdit, "完成");
-                    selectedTitleViewHolder.tvTitle.setText("拖动排序");
+                    selectedTitleViewHolder.tvTitle.setText("已选标签");
                     selectedTitleViewHolder.tvAction.setText("完成");
                 }
                 return true;
@@ -204,7 +216,7 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     //开启编辑模式
                     changeEditState(true);
                     //  mEditViewHolder.setText(R.id.tvEdit, "完成");
-                    selectedTitleViewHolder.tvTitle.setText("拖动排序");
+                    selectedTitleViewHolder.tvTitle.setText("已选标签");
                     selectedTitleViewHolder.tvAction.setText("完成");
                 }
                 if (onChannelDragListener != null) {
@@ -437,10 +449,10 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return;
         }
         if (state) {
-            selectedTitleViewHolder.tvTitle.setText("拖动排序");
+            selectedTitleViewHolder.tvTitle.setText("已选标签");
             selectedTitleViewHolder.tvAction.setText("完成");
         } else {
-            selectedTitleViewHolder.tvTitle.setText("切换栏目");
+            selectedTitleViewHolder.tvTitle.setText("已选标签");
             selectedTitleViewHolder.tvAction.setText("编辑");
             finishEdit();
 
@@ -518,11 +530,15 @@ class LabelSelectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         private TextView tvTitle;
         private TextView tvAction;
+        private TextView tvTip;
+        private View devideLineView;
 
         private LabelTitleViewHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
             tvAction = (TextView) itemView.findViewById(R.id.tv_action);
+            tvTip = itemView.findViewById(R.id.tv_tip);
+            devideLineView = itemView.findViewById(R.id.devideLineView);
         }
     }
 

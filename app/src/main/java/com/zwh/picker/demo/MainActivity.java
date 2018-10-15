@@ -1,5 +1,7 @@
 package com.zwh.picker.demo;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements OnEditFinishListener {
 
     private LabelSelectionFragment labelSelectionFragment;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,19 @@ public class MainActivity extends AppCompatActivity implements OnEditFinishListe
                 .beginTransaction()
                 .replace(R.id.content_view, labelSelectionFragment)
                 .commit();
+        handler = new Handler(){
+
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case 0:
+                        labelSelectionFragment.setEdieMode();
+                        break;
+                }
+            }
+        };
+
+        handler.sendEmptyMessageDelayed(0,3000);
     }
 
 

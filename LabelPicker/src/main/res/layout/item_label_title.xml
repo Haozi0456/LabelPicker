@@ -1,29 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6.0dp"
-        android:paddingTop="6.0dp"
-        android:text="点击添加更多标签"
-        android:textColor="@color/label_text"
-        android:textSize="14sp" />
+    <View
+        android:id="@+id/devideLineView"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#FFF8F8F8"
+        />
 
-    <TextView
-        android:id="@+id/tv_action"
-        android:layout_width="48.0dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:paddingBottom="6.0dp"
-        android:paddingTop="6.0dp"
-        android:text="编辑"
-        android:textColor="@color/label_text"
-        android:textSize="14sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <View
+            android:id="@+id/markerView"
+            android:layout_width="2dp"
+            android:layout_height="11dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="#FF6666"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_toRightOf="@id/markerView"
+            android:text="已选标签"
+            android:layout_centerVertical="true"
+            android:textColor="@color/label_text"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_toRightOf="@id/tv_title"
+            android:paddingBottom="6.0dp"
+            android:paddingTop="6.0dp"
+            android:layout_centerVertical="true"
+            android:text="(按住拖动调整顺序)"
+            android:textColor="@color/label_alway_selected"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_action"
+            android:layout_width="48.0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="编辑"
+            android:visibility="gone"
+            android:textColor="@color/label_text"
+            android:textSize="14sp"/>
+    </RelativeLayout>
 
 
-</FrameLayout>
+</LinearLayout>
