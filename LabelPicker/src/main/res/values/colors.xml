@@ -3,4 +3,15 @@
     <color name="label_text">#333333</color>
     <color name="label_alway_selected">#999999</color>
     <color name="label_bg">#F8F8F8</color>
+
+    <!--app主题色_标题栏颜色-->
+    <color name="main_colorPrimary">#FFD0111B</color>
+    <!--app主题色_状态栏颜色-->
+    <color name="main_colorPrimaryDark">#D34E31</color>
+    <!--app主题色_光标颜色-->
+    <color name="main_colorAccent">#2A8CFF</color>
+    <!--app 页面背景色-->
+    <color name="main_colorBackground">#EFF1F7</color>
+
+    <color name="f8">#F8F8F8</color>
 </resources>

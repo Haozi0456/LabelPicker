@@ -21,7 +21,7 @@
             android:layout_height="11dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:background="#FF6666"
+            android:background="@color/main_colorPrimary"
             />
 
         <TextView
