@@ -20,7 +20,7 @@
             android:gravity="center"
             android:text="精华"
             android:textColor="@color/label_text"
-            android:textSize="14sp" />
+            android:textSize="@dimen/textSize_14sp" />
 
         <ImageView
             android:id="@+id/iv_remove"

@@ -33,7 +33,7 @@
             android:text="已选标签"
             android:layout_centerVertical="true"
             android:textColor="@color/label_text"
-            android:textSize="14sp"
+            android:textSize="@dimen/textSize_14sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_centerVertical="true"
             android:text="(按住拖动调整顺序)"
             android:textColor="@color/label_alway_selected"
-            android:textSize="12sp"/>
+            android:textSize="@dimen/textSize_12sp"/>
 
         <TextView
             android:id="@+id/tv_action"
@@ -59,7 +59,7 @@
             android:text="编辑"
             android:visibility="gone"
             android:textColor="@color/label_text"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/textSize_14sp"/>
     </RelativeLayout>
 
 
